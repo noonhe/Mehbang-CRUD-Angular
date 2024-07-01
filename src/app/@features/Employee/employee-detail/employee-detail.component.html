@@ -1,1 +1,31 @@
-<p>employee-detail works!</p>
+<mat-card >
+    <ng-container *ngIf="employeeData$ | async as employeeDetail">         
+        <mat-card-header>
+          <mat-card-title>{{employeeDetail.employee_name}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="detail-row">
+                <span class="detail-key">Age:</span>
+                <span class="detail-value">{{employeeDetail.employee_age}}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-key">Salary:</span>
+                <span class="detail-value">{{employeeDetail.employee_salary | number}}$</span>
+            </div>
+        </mat-card-content>
+    </ng-container>
+    <mat-card-content>
+            
+        <div *ngIf="loading" class="loading-wrapper">
+            <mat-spinner diameter="30"></mat-spinner>
+        </div>
+        <div *ngIf="hasError" class="error-wrapper">
+            <span>An Error Occured</span>
+            <button mat-stroked-button color="warn" (click)="getEmployeeDetail()">Try Again</button>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button *ngIf="employeeData$ | async as employeeDetail" mat-stroked-button color="primary" (click)="openUpdateForm(employeeDetail)">Update</button>
+        <a routerLink="/" mat-button>Back to List</a>
+    </mat-card-actions>
+</mat-card>

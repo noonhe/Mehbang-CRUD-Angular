@@ -1,0 +1,25 @@
+.loading-wrapper, .error-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    width: 100%;
+}
+.error-wrapper{
+    gap: 1rem;
+    flex-direction: column;
+    span{
+        color: red;
+    }
+}
+.detail-row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    .detail-key{
+        
+    }
+    .detail-value{
+
+    }
+}

@@ -1,1 +1,29 @@
-<p>add-update-employee works!</p>
+<h2 mat-dialog-title>{{isAdd ? 'Add New Employee' : 'Update Employee'}}</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="employeeForm" (ngSubmit)="save()">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Mike Smith" formControlName="name">
+        </mat-form-field>
+      
+        <mat-form-field appearance="outline">
+          <mat-label>Age</mat-label>
+          <input matInput (keydown)="checkOnlyNumber($event)" placeholder="30" formControlName="age">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Salary</mat-label>
+          <input matInput (keydown)="checkOnlyNumber($event)" placeholder="30,000" formControlName="salary">
+        </mat-form-field>
+    </form>
+    <p class="error-msg" *ngIf="errorMessage">
+        {{errorMessage}}
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-stroked-button color="primary" cdkFocusInitial [disabled]="employeeForm.invalid" (click)="save()">
+    <span *ngIf="!loading">Save</span>
+    <mat-spinner *ngIf="loading" diameter="24" color="white"></mat-spinner>
+</button>
+</mat-dialog-actions>
