@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { EmployeeListComponent } from './@features/Employee/employee-list/employee-list.component';
 import { AddUpdateEmployeeComponent } from './@features/Employee/add-update-employee/add-update-employee.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
