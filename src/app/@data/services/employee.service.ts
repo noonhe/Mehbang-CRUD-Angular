@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Employee } from 'src/app/@models/employee.model';
+import { Observable, catchError, map, throwError } from 'rxjs';
+import { Employee, GetEmployee, GetEmployees, SaveEmployee } from 'src/app/@models/employee.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http'
 @Injectable({
@@ -12,19 +12,28 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) { }
 
-  getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(`${this.apiUrl}/employees`);
+  getEmployees(): Observable<GetEmployees> {
+    return this.http.get<GetEmployees>(`${this.apiUrl}/employees`).pipe(
+      map(res => res),
+      catchError( err => throwError(() => err))
+    );
   }
 
-  getEmployee(id: number): Observable<Employee> {
-    return this.http.get<Employee>(`${this.apiUrl}/employee/${id}`);
+  getEmployee(id: number): Observable<GetEmployee> {
+    return this.http.get<GetEmployee>(`${this.apiUrl}/employee/${id}`);
   }
 
-  createEmployee(employee: Employee): Observable<Employee> {
-    return this.http.post<Employee>(`${this.apiUrl}/create`, employee);
+  createEmployee(employee: SaveEmployee): Observable<GetEmployee> {
+    return this.http.post<GetEmployee>(`${this.apiUrl}/create`, employee).pipe(
+      map(res => res),
+      catchError( err => throwError(() => err))
+    );
   }
 
-  updateEmployee(id: number, employee: Employee): Observable<Employee> {
-    return this.http.put<Employee>(`${this.apiUrl}/update/${id}`, employee);
+  updateEmployee(id: number, employee: SaveEmployee): Observable<GetEmployee> {
+    return this.http.put<GetEmployee>(`${this.apiUrl}/update/${id}`, employee).pipe(
+      map(res => res),
+      catchError( err => throwError(() => err))
+    );
   }
 }
