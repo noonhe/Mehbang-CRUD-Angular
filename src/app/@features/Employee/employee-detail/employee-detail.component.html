@@ -12,6 +12,10 @@
                 <span class="detail-key">Salary:</span>
                 <span class="detail-value">{{employeeDetail.employee_salary | number}}$</span>
             </div>
+            <mat-card-actions >
+                <button mat-stroked-button color="primary" (click)="openUpdateForm(employeeDetail)">Update</button>
+                <a routerLink="/" mat-button>Back to List</a>
+            </mat-card-actions>
         </mat-card-content>
     </ng-container>
     <mat-card-content>
@@ -24,8 +28,7 @@
             <button mat-stroked-button color="warn" (click)="getEmployeeDetail()">Try Again</button>
         </div>
     </mat-card-content>
-    <mat-card-actions>
-        <button *ngIf="employeeData$ | async as employeeDetail" mat-stroked-button color="primary" (click)="openUpdateForm(employeeDetail)">Update</button>
+    <mat-card-actions *ngIf="loading || hasError">
         <a routerLink="/" mat-button>Back to List</a>
     </mat-card-actions>
 </mat-card>
