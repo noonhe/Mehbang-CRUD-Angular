@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Mehbang-CRUD-Angular';
+  title = 'Mehbang CRUD Angular16';
 }

@@ -5,13 +5,7 @@ import { LayoutComponent } from './@shell/layout/layout.component';
 const routes: Routes = [
   {
     path:'',
-    component:LayoutComponent,
-    children:[
-      {
-        path:'employees',
-        loadChildren: () => import('./@features/Employee/employee.module').then((m) => m.EmployeeModule)
-      }
-    ]
+    loadChildren: () => import('./@shell/shell.module').then((m) => m.ShellModule)
   },
   {
     path:'',
