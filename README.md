@@ -42,5 +42,14 @@ To build the application for production:
 The build artifacts will be stored in the `dist/` directory.
 
 
-## Additional Detail
+## Project Structure
 
+- @shell\Shell module : contains the main layout and header of the app
+- @features\Employee module : contains add/update , employeeList and employeeDetail components
+- @data folder contains services and shared data
+- @styles folder contains shared styles
+- @models folder contains emploee data models (types and interfaces) used in the app
+
+## Branches
+
+this project has three brances : main , staging and development
