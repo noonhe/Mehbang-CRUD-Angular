@@ -7,12 +7,14 @@ import { EmployeeListComponent } from './@features/Employee/employee-list/employ
 import { AddUpdateEmployeeComponent } from './@features/Employee/add-update-employee/add-update-employee.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { LayoutComponent } from './@shell/layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeListComponent,
-    AddUpdateEmployeeComponent
+    AddUpdateEmployeeComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
